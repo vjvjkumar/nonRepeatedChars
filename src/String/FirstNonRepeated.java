@@ -7,45 +7,46 @@ public class FirstNonRepeated {
 	
  
 	    public static void main(String[] args)
-	    {
-	        	        
+	    {	          
 	        System.out.println(" Please enter the input string :" );
 	        
-	        Scanner in = new Scanner (System.in);
-	        String s=in.nextLine();
+	        Scanner scan = new Scanner (System.in);
+	        String str = scan.nextLine();
 	        
-	        char c=firstNonRepeatedCharacter(s);
-	        System.out.println("The first non repeated character is :  " + c);
+	        char ch = firstNonRepeatedCharacter(str);
+	        System.out.println("The first non repeated character is :  " + ch);
 	    }
 	    
 	    public static Character firstNonRepeatedCharacter(String str){
 	    	
-	        HashMap<Character,Integer>  characterhashtable= new HashMap<Character ,Integer>();
+	        HashMap<Character,Integer>  hMap = new HashMap<Character ,Integer>();
 	        
-	        int i,length ;
-	        Character c ;
+	        int i;
+	        int length;
+	        Character ch ;
+	        
 	        length= str.length();  // Scan string and build hash table
 	        
 	        for (i=0; i<length; i++)
 	        	{
-	            c=str.charAt(i);
-	            if(characterhashtable.containsKey(c))
+	            ch = str.charAt(i);
+	            if(hMap.containsKey(ch))
 	            {
-	                // increment count corresponding to c
-	                characterhashtable.put(  c ,  characterhashtable.get(c) +1 );
+	                // increment count corresponding to ch
+	                hMap.put( ch ,  hMap.get(ch) +1 );
 	            }
 	            else
 	            {
-	                characterhashtable.put( c , 1 ) ;
+	                hMap.put(ch, 1);
 	            }
 	        }
-	        // Search characterhashtable in in order of string str
+	        // Search hashmap in order of string str
 	        
-	        for (i =0 ; i < length ; i++ )
+	        for (i =0; i<length; i++ )
 	        {
-	            c= str.charAt(i);
-	            if( characterhashtable.get(c)  == 1 )
-	            return c;
+	            ch= str.charAt(i);
+	            if( hMap.get(ch)  == 1 )
+	            return ch;
 	        }
 	        return null ;
 	    }
